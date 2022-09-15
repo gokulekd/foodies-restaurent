@@ -63,6 +63,7 @@ Dialog addNewCategoryDialogBox(BuildContext context) {
                         } else if (categoryname.isNotEmpty) {
                           AddCategory().addNewCategory(categoryname);
                           Get.back();
+                         
                         }
                       },
                       icon: const Icon(Icons.add_circle),
