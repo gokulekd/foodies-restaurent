@@ -55,7 +55,6 @@ class ProductDetailedViewPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
@@ -100,16 +99,17 @@ class ProductDetailedViewPage extends StatelessWidget {
                       cancelCustomerOrder(context);
                     }),
                 BottomBigButton(
-                    buttonColor: const Color.fromARGB(255, 72, 136, 55),
-                    buttonText: "Edit Product ",
-                    iconName: Icons.edit,
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>  ProductUpdatePage(),
-                          ));
-                    }),
+                  buttonColor: const Color.fromARGB(255, 72, 136, 55),
+                  buttonText: "Edit Product ",
+                  iconName: Icons.edit,
+                  onPressed: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductUpdatePage(),
+                        ));
+                  },
+                ),
               ],
             ),
           ],

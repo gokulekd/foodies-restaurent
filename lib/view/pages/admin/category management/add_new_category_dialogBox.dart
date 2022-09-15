@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:foodies_restaurent/constants/colors.dart';
 import 'package:foodies_restaurent/constants/sized_box.dart';
@@ -63,7 +63,6 @@ Dialog addNewCategoryDialogBox(BuildContext context) {
                         } else if (categoryname.isNotEmpty) {
                           AddCategory().addNewCategory(categoryname);
                           Get.back();
-                         
                         }
                       },
                       icon: const Icon(Icons.add_circle),
