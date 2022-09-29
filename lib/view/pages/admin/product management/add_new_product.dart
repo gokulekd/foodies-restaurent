@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies_restaurent/constants/border_radious.dart';
@@ -112,7 +111,7 @@ class AddNewProductPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(
                   onPressed: () async {
-                    User? user =  FirebaseAuth.instance.currentUser;
+                    User? user = FirebaseAuth.instance.currentUser;
                     final name = namecontroller.text.trim();
                     final price = pricecontroller.text.trim();
                     final quantity = quantitycontroller.text.trim();
@@ -122,14 +121,15 @@ class AddNewProductPage extends StatelessWidget {
                         quantity.isNotEmpty &&
                         discription.isNotEmpty) {
                       final fullProductData = AddProductModel(
-                          image: path.toString(),
-                          productName: name,
-                          price: price,
-                          quantity: quantity,
-                          category: dropDownValue.toString(),
-                          discription: discription,
-                          uid:user!.uid,
-                          );
+                        image: path.toString(),
+                        productName: name,
+                        price: int.parse(price),
+                        quantity: int.parse(price),
+                        category: dropDownValue.toString(),
+                        discription: discription,
+                        documentID: user!.uid,
+                        available: true,
+                      );
 
                       await AddproductFirebase()
                           .addProductController(fullProductData);

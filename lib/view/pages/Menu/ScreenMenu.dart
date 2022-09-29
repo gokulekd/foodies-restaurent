@@ -1,10 +1,8 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies_restaurent/constants/colors.dart';
-import 'package:foodies_restaurent/constants/sized_box.dart';
 import 'package:foodies_restaurent/model/add_product_model.dart';
 import 'package:foodies_restaurent/view/pages/Menu/widget/MenuListWidget.dart';
 import 'package:foodies_restaurent/view/pages/drawer/navigation_drawer.dart';
@@ -30,9 +28,6 @@ class _ScreenMenuState extends State<ScreenMenu> {
           preferredSize: Size.fromHeight(80), child: CustomAppBar()),
       body: SafeArea(
         child: ListView(
-           physics: const BouncingScrollPhysics(
-               parent: AlwaysScrollableScrollPhysics()),
-          // shrinkWrap: true,
           children: [
             StreamBuilder(
               stream: FirebaseFirestore.instance
@@ -42,10 +37,9 @@ class _ScreenMenuState extends State<ScreenMenu> {
                   AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 if (snapshot.hasData) {
                   return SizedBox(
-                     height: MediaQuery.of(context).size.height * 0.8,
+                    height: MediaQuery.of(context).size.height * 0.8,
                     child: ListView.builder(
-                   
-                       shrinkWrap: true,
+                      shrinkWrap: true,
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         //
@@ -85,14 +79,12 @@ class _ScreenMenuState extends State<ScreenMenu> {
 
                             log(snapshot.data!.docs.toString());
                             return ListView.builder(
-                              // physics: const BouncingScrollPhysics(
-                              //     parent: AlwaysScrollableScrollPhysics()),
-                               shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
                               padding:
                                   const EdgeInsets.only(top: 10, bottom: 10),
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
-                                //  log(snapshot.data!.data()![index]['ProductImage'] );
                                 return CartPageFoodDetails(
                                     height: heightMedia,
                                     width: widthMedia,

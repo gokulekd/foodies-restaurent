@@ -16,26 +16,29 @@ class AddproductFirebase {
     firebase
         .collection("ProductList")
         .doc(user!.uid)
-        .collection(productModel.category!).doc().set(productModel.ProductToJson());
-        
+        .collection(productModel.category!)
+        .add(productModel.ProductToJson())
+        .then((value) {
+      value.update({"id": value.id});
+    });
   }
 
   addProductImage(File filepath) async {
     try {
-      final ref =  FirebaseStorage.instance.ref("Product images/$filepath");
-      await ref.putFile(filepath).then((p0)async{
-        Get.snackbar("message", "Image added Successfully",backgroundColor: kgreen,colorText: kwhite);
-
+      final ref = FirebaseStorage.instance
+          .ref("Product images/$filepath")
+          .child("all Product Image");
+      await ref.putFile(filepath).then((p0) async {
+        Get.snackbar("message", "Image added Successfully",
+            backgroundColor: kgreen, colorText: kwhite);
       });
       final urlDownload = await ref.getDownloadURL();
       return urlDownload;
     } on FirebaseException catch (e) {
-           Get.snackbar("Firebase error", e.message.toString(),backgroundColor: kred,colorText: kwhite);
-      
-    }catch(e)
-    {
+      Get.snackbar("Firebase error", e.message.toString(),
+          backgroundColor: kred, colorText: kwhite);
+    } catch (e) {
       log(e.toString());
-
     }
   }
 }

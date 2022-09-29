@@ -6,12 +6,15 @@ import '../../../../model/add_product_model.dart';
 // ignore: must_be_immutable
 class CartPageFoodDetails extends StatefulWidget {
   final double height;
-AddProductModel product;
+  AddProductModel product;
 
   final double width;
 
-   CartPageFoodDetails(
-      {Key? key, required this.height, required this.width,required this.product})
+  CartPageFoodDetails(
+      {Key? key,
+      required this.height,
+      required this.width,
+      required this.product})
       : super(key: key);
 
   @override
@@ -22,19 +25,15 @@ class _CartPageFoodDetailsState extends State<CartPageFoodDetails> {
   bool value = true;
   @override
   Widget build(BuildContext context) {
-
     double widthMedia = MediaQuery.of(context).size.width;
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-           boxShadow: const [
-            BoxShadow(blurRadius: 2,spreadRadius: 0.5)
-           ],
-            border: Border.all(color: kblack,width: 0.5),
-            color:kwhite,
-         
+              boxShadow: const [BoxShadow(blurRadius: 2, spreadRadius: 0.5)],
+              border: Border.all(color: kblack, width: 0.5),
+              color: kwhite,
               borderRadius: circle20),
           height: widget.height * 0.15,
           width: widget.width * 0.95,
@@ -44,49 +43,27 @@ class _CartPageFoodDetailsState extends State<CartPageFoodDetails> {
                 top: 10,
                 left: 10,
                 child: Center(
-                    child: Container(
-               decoration: BoxDecoration(
-                   image:  DecorationImage(
-                       image: NetworkImage(widget.product.image!), fit: BoxFit.cover
-            
-             ),
-             
-                   borderRadius: circle20),
-               height: widget.height * 0.12,
-               width: widget.width * 0.25,
-             ),
-        //           child:  Container(
-        //             decoration: BoxDecoration(
-        //                borderRadius: circle20
-        //             ),
-        //              height: widget.height * 0.12,
-        //              width: widget.width * 0.25,
-        //   alignment: Alignment.center,
-        //   child: Image.network(
-        //     widget.product.image!,
-        //     fit: BoxFit.cover,
-        //     loadingBuilder: (context, child, loadingProgress) {
-        //       if (loadingProgress == null) return child;
-
-        //       return const Center(child: Text('Loading...'));
-        //       // You can use LinearProgressIndicator or CircularProgressIndicator instead
-        //     },
-        //     errorBuilder: (context, error, stackTrace) =>
-        //         const Text('Some errors occurred!'),
-        //   ),
-        // ),
-           
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(widget.product.image!),
+                            fit: BoxFit.cover),
+                        borderRadius: circle20),
+                    height: widget.height * 0.12,
+                    width: widget.width * 0.25,
+                  ),
                 ),
               ),
-               Positioned(
+              Positioned(
                 top: 20,
                 left: 140,
                 child: Text(
-                 widget.product.productName!.toString(),
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  widget.product.productName!.toString(),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-               Positioned(
+              Positioned(
                 top: 45,
                 left: 140,
                 child: Text(
@@ -94,7 +71,7 @@ class _CartPageFoodDetailsState extends State<CartPageFoodDetails> {
                   style: const TextStyle(fontSize: 18, color: kblack),
                 ),
               ),
-               Positioned(
+              Positioned(
                 top: 70,
                 left: 140,
                 child: Text(
